@@ -18,13 +18,17 @@ public class WeatherDataProcessor {
             String line = br.readLine(); // to skip the first line (headlines)
             this.columnNames = Arrays.asList(line.split(separator));
             
+            int lineNumber = 1;
+
             while ((line = br.readLine()) != null) {
-                String[] values = line.split(separator);
-
-
+                String[] values = line.split(separator);                
+                this.CheckIfLineValuesCanBeParsed(lineNumber, values);
+ 
                 WeatherData weatherData = new WeatherData(Integer.parseInt(values[getIndexOfColumn("Day")]), Integer.parseInt(values[getIndexOfColumn("MnT")]), Integer.parseInt(values[getIndexOfColumn("MxT")]));
 
                 this.allWeatherData.add(weatherData);
+
+                lineNumber ++;
             }
         }
 
@@ -48,5 +52,14 @@ public class WeatherDataProcessor {
     public int getIndexOfColumn(String SearchdeColumnName) {
         // is used in case the order of columns in the csv changed
         return this.columnNames.indexOf(SearchdeColumnName);
+    }
+
+    public void CheckIfLineValuesCanBeParsed(int line, String[] values) {
+        for (String columnName : columnsWithIntegerValues) {
+            if (!values[getIndexOfColumn(columnName)].matches("^-?[0-9]+$"))
+            {
+                throw new Error("Column " + columnName + " in line " + line + " should be an integer.");
+            }
+        }
     }
 }

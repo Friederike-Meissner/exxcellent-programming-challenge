@@ -1,6 +1,7 @@
 package de.exxcellent.challenge;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,6 +25,7 @@ class AppTest {
 
     @Test
     void shouldGetDayWithSmallestTempSpread() {
+
         WeatherDataProcessor weatherDataProcessor = new WeatherDataProcessor();
         weatherDataProcessor.loadData("/home/rike/programming-challenge/src/test/java/testResources/wheaterTest.csv", ",");
         int dayWithSmallestTempSpread = weatherDataProcessor.getDayWithSmallestTempSpread();
@@ -31,6 +33,16 @@ class AppTest {
         assertEquals(2, dayWithSmallestTempSpread, "Did not find the day with the smallest temperature spread.");
     }
 
+    @Test
+    public void testLoadDataThrowsError() {
+        WeatherDataProcessor weatherDataProcessor = new WeatherDataProcessor();
+        try {
+            weatherDataProcessor.loadData("/home/rike/programming-challenge/src/test/java/testResources/wheaterTestWithNotNumericValue.csv", ",");
+            fail("Expected an Error to be thrown");
+        } catch (Error e) {
+            assertEquals("Column MxT in line 1 should be an integer.", e.getMessage());
+        } 
+    }
 
     @Test
     void runFootball() {
