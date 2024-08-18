@@ -45,8 +45,13 @@ class AppTest {
     }
 
     @Test
-    void runFootball() {
-        App.main("--football", "football.csv");
+    void runWeather() {
+        App.main("--weather", "/home/rike/programming-challenge/src/main/resources/de/exxcellent/challenge/weather.csv", ",");
     }
+
+    // @Test
+    // void runFootball() {
+    //     App.main("--football", "football.csv");
+    // }
 
 }

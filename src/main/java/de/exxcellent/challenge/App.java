@@ -14,10 +14,16 @@ public final class App {
      */
     public static void main(String... args) {
 
-        // Your preparation code …
+        String type = args[0];
+        String filePath = args[1];
+        String separator = args[2];
 
-        String dayWithSmallestTempSpread = "Someday";     // Your day analysis function call …
-        System.out.printf("Day with smallest temperature spread : %s%n", dayWithSmallestTempSpread);
+        if ("--weather".equals(type)) {
+            WeatherDataProcessor weatherDataProcessor = new WeatherDataProcessor();
+            weatherDataProcessor.loadData(filePath, separator);
+            int dayWithSmallestTempSpread = weatherDataProcessor.getDayWithSmallestTempSpread();
+            System.out.printf("Day with smallest temperature spread : %s%n", dayWithSmallestTempSpread);
+        }
 
         String teamWithSmallestGoalSpread = "A good team"; // Your goal analysis function call …
         System.out.printf("Team with smallest goal spread       : %s%n", teamWithSmallestGoalSpread);
