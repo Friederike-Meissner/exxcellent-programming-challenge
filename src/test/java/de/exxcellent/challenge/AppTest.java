@@ -31,6 +31,7 @@ class AppTest {
         assertEquals(2, dayWithSmallestTempSpread, "Did not find the day with the smallest temperature spread.");
     }
 
+
     @Test
     void runFootball() {
         App.main("--football", "football.csv");
