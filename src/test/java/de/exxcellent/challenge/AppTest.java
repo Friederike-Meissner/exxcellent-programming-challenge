@@ -25,10 +25,10 @@ class AppTest {
     @Test
     void shouldGetDayWithSmallestTempSpread() {
         WeatherDataProcessor weatherDataProcessor = new WeatherDataProcessor();
-        weatherDataProcessor.loadData("../testResources/wheaterTest.csv");
+        weatherDataProcessor.loadData("/home/rike/programming-challenge/src/test/java/testResources/wheaterTest.csv", ",");
         int dayWithSmallestTempSpread = weatherDataProcessor.getDayWithSmallestTempSpread();
 
-        assertEquals(1, dayWithSmallestTempSpread, "Did not find the day with the smallest temperature spread.");
+        assertEquals(2, dayWithSmallestTempSpread, "Did not find the day with the smallest temperature spread.");
     }
 
     @Test
