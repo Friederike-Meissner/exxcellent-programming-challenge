@@ -18,7 +18,7 @@ public class WeatherDataProcessor {
                 String[] values = line.split(separator);
                 WeatherData weatherData = new WeatherData(Integer.parseInt(values[0]), Integer.parseInt(values[2]), Integer.parseInt(values[1]));
 
-                allWeatherData.add(weatherData);
+                this.allWeatherData.add(weatherData);
             }
         }
 
@@ -28,6 +28,14 @@ public class WeatherDataProcessor {
     }
 
     public int getDayWithSmallestTempSpread() {
-        return 0;
+        WeatherData weatherDataWithSmallestTempSpread = null;      
+
+        for (WeatherData weatherData : this.allWeatherData) {
+            if (weatherDataWithSmallestTempSpread == null || weatherData.getTempSpread() < weatherDataWithSmallestTempSpread.getTempSpread()) {
+                weatherDataWithSmallestTempSpread = weatherData;
+            }
+        }
+
+        return weatherDataWithSmallestTempSpread.getDay();
     }
 }

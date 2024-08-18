@@ -22,4 +22,8 @@ public class WeatherData {
     public int getMaxTemp() {
         return this.maxTemp;
     } 
+
+    public int getTempSpread() {
+        return this.maxTemp - this.minTemp;
+    }
 }
