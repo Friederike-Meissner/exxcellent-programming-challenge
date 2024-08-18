@@ -1,9 +1,8 @@
 package de.exxcellent.challenge;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Example JUnit 5 test case.
@@ -11,16 +10,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 class AppTest {
 
-    private String successLabel = "not successful";
+    // private String successLabel = "not successful";
 
     @BeforeEach
     void setUp() {
-        successLabel = "successful";
+        // successLabel = "successful";
     }
 
+    // @Test
+    // void aPointlessTest() {
+    //     assertEquals("successful", successLabel, "My expectations were not met");
+    // }
+
     @Test
-    void aPointlessTest() {
-        assertEquals("successful", successLabel, "My expectations were not met");
+    void shouldGetDayWithSmallestTempSpread() {
+        WeatherDataProcessor weatherDataProcessor = new WeatherDataProcessor();
+        weatherDataProcessor.loadData("../testResources/wheaterTest.csv");
+        int dayWithSmallestTempSpread = weatherDataProcessor.getDayWithSmallestTempSpread();
+
+        assertEquals(1, dayWithSmallestTempSpread, "Did not find the day with the smallest temperature spread.");
     }
 
     @Test
