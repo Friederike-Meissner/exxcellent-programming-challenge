@@ -1,4 +1,4 @@
-package de.exxcellent.challenge;
+package de.exxcellent.challenge.models;
 
 public class WeatherData {
     private int day;
