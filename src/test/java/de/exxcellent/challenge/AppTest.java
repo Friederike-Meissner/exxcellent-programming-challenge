@@ -79,4 +79,10 @@ class AppTest {
         App.main("--football", Paths.get("src/main/resources/de/exxcellent/challenge/football.csv").toString(), ",");
     }
 
+    @Test
+    void runWeatherWithoutSeparator() {
+        App.main("--weather", Paths.get("src/main/resources/de/exxcellent/challenge/weather.csv").toString());
+    }
+
+
 }
