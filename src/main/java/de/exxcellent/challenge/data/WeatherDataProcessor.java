@@ -16,7 +16,7 @@ public class WeatherDataProcessor implements DataProcessor {
     private String[] columnsWithIntegerValues = {"Day","MxT","MnT"}; // for checking if they are integers
     private List<String> allColumnNames = new ArrayList<>();
 
-    public void loadData(String path, String separator) {
+    public void loadCSVData(String path, String separator) {
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line = br.readLine(); // to skip the first line (headlines)
             this.allColumnNames = Arrays.asList(line.split(separator));

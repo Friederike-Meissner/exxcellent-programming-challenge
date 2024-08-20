@@ -32,7 +32,17 @@ class AppTest {
     void shouldGetDayWithSmallestTempSpread() {
 
         WeatherDataProcessor weatherDataProcessor = new WeatherDataProcessor();
-        weatherDataProcessor.loadData(Paths.get("src/test/java/testResources/wheaterTest.csv").toString(), ",");
+        weatherDataProcessor.loadCSVData(Paths.get("src/test/java/testResources/wheaterTest.csv").toString(), ",");
+        int dayWithSmallestTempSpread = weatherDataProcessor.getDayWithSmallestTempSpread();
+
+        assertEquals(2, dayWithSmallestTempSpread, "Did not find the day with the smallest temperature spread.");
+    }
+
+    @Test
+    void shouldBePossibleToUseAnotherSeparatorForCSV() {
+
+        WeatherDataProcessor weatherDataProcessor = new WeatherDataProcessor();
+        weatherDataProcessor.loadCSVData(Paths.get("src/test/java/testResources/wheaterTestWithOtherSeparator.csv").toString(), ";");
         int dayWithSmallestTempSpread = weatherDataProcessor.getDayWithSmallestTempSpread();
 
         assertEquals(2, dayWithSmallestTempSpread, "Did not find the day with the smallest temperature spread.");
@@ -42,7 +52,7 @@ class AppTest {
     void shouldThrowAnErrorIfAValueCanNotBeParsedToInteger() {
         WeatherDataProcessor weatherDataProcessor = new WeatherDataProcessor();
         try {
-            weatherDataProcessor.loadData(Paths.get("src/test/java/testResources/wheaterTestWithNotNumericValue.csv").toString(), ",");
+            weatherDataProcessor.loadCSVData(Paths.get("src/test/java/testResources/wheaterTestWithNotNumericValue.csv").toString(), ",");
             fail("Expected an Error to be thrown");
         } catch (Error e) {
             assertEquals("Column MxT in line 1 should be an integer.", e.getMessage());
@@ -53,7 +63,7 @@ class AppTest {
     void shouldGetTheFootballTeamWithSmallestGoalsSpread() {
 
         FootballDataProcessor footballDataProcessor = new FootballDataProcessor();
-        footballDataProcessor.loadData(Paths.get("src/test/java/testResources/footballTest.csv").toString(), ",");
+        footballDataProcessor.loadCSVData(Paths.get("src/test/java/testResources/footballTest.csv").toString(), ",");
         String teamWithSmallestGoalSpread = footballDataProcessor.getTeamWithSmallestGoalSpread();
 
         assertEquals("Leeds", teamWithSmallestGoalSpread, "Did not find the team with the smallest goal spread.");

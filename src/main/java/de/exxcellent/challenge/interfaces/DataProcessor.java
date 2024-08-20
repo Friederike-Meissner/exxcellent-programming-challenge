@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface DataProcessor {
 
-    void loadData(String path, String separator);
+    void loadCSVData(String path, String separator);
 
     default int getIndexOfColumn(String SearchedColumnName, List<String> columnNames) {
         // is used in case the order of columns in the csv changed
