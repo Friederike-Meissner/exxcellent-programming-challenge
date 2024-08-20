@@ -71,17 +71,22 @@ class AppTest {
 
     @Test
     void runWeather() {
-        App.main("--weather", Paths.get("src/main/resources/de/exxcellent/challenge/weather.csv").toString(), ",");
+        App.main("--weather", Paths.get("src/main/resources/de/exxcellent/challenge/weather.csv").toString());
     }
 
     @Test
     void runFootball() {
-        App.main("--football", Paths.get("src/main/resources/de/exxcellent/challenge/football.csv").toString(), ",");
+        App.main("--football", Paths.get("src/main/resources/de/exxcellent/challenge/football.csv").toString());
     }
 
     @Test
-    void runWeatherWithoutSeparator() {
-        App.main("--weather", Paths.get("src/main/resources/de/exxcellent/challenge/weather.csv").toString());
+    void runWeatherWithSeparator() {
+        App.main("--weather", Paths.get("src/main/resources/de/exxcellent/challenge/weather.csv").toString(), ",");
+    }
+
+    @Test
+    void runFootballWithSeparator() {
+        App.main("--football", Paths.get("src/main/resources/de/exxcellent/challenge/football.csv").toString(), ",");
     }
 
 
