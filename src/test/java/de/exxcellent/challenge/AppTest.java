@@ -46,15 +46,15 @@ class AppTest {
         } 
     }
 
-    // @Test
-    // void shouldGetTheFootballTeamWithSmallestGoalsSpread() {
+    @Test
+    void shouldGetTheFootballTeamWithSmallestGoalsSpread() {
 
-    //     FootballDataProcessor footballDataProcessor = new FootballDataProcessor();
-    //     footballDataProcessor.loadData(Paths.get("src/test/java/testResources/wheaterTest.csv").toString(), ",");
-    //     String teamWithSmallestGoalSpread = footballDataProcessor.getTeamWithSmallestGoalSpread();
+        FootballDataProcessor footballDataProcessor = new FootballDataProcessor();
+        footballDataProcessor.loadData(Paths.get("src/test/java/testResources/footballTest.csv").toString(), ",");
+        String teamWithSmallestGoalSpread = footballDataProcessor.getTeamWithSmallestGoalSpread();
 
-    //     assertEquals("Leeds", teamWithSmallestGoalSpread, "Did not find the team with the smallest goal spread.");
-    // }
+        assertEquals("Leeds", teamWithSmallestGoalSpread, "Did not find the team with the smallest goal spread.");
+    }
 
     @Test
     void runWeather() {
