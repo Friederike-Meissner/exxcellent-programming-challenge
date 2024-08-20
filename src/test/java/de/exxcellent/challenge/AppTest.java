@@ -1,5 +1,7 @@
 package de.exxcellent.challenge;
 
+import java.nio.file.Paths;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,7 +29,7 @@ class AppTest {
     void shouldGetDayWithSmallestTempSpread() {
 
         WeatherDataProcessor weatherDataProcessor = new WeatherDataProcessor();
-        weatherDataProcessor.loadData("/home/rike/programming-challenge/src/test/java/testResources/wheaterTest.csv", ",");
+        weatherDataProcessor.loadData(Paths.get("src/test/java/testResources/wheaterTest.csv").toString(), ",");
         int dayWithSmallestTempSpread = weatherDataProcessor.getDayWithSmallestTempSpread();
 
         assertEquals(2, dayWithSmallestTempSpread, "Did not find the day with the smallest temperature spread.");
@@ -37,7 +39,7 @@ class AppTest {
     public void testLoadDataThrowsError() {
         WeatherDataProcessor weatherDataProcessor = new WeatherDataProcessor();
         try {
-            weatherDataProcessor.loadData("/home/rike/programming-challenge/src/test/java/testResources/wheaterTestWithNotNumericValue.csv", ",");
+            weatherDataProcessor.loadData(Paths.get("src/test/java/testResources/wheaterTestWithNotNumericValue.csv").toString(), ",");
             fail("Expected an Error to be thrown");
         } catch (Error e) {
             assertEquals("Column MxT in line 1 should be an integer.", e.getMessage());
@@ -46,7 +48,7 @@ class AppTest {
 
     @Test
     void runWeather() {
-        App.main("--weather", "/home/rike/programming-challenge/src/main/resources/de/exxcellent/challenge/weather.csv", ",");
+        App.main("--weather", Paths.get("src/main/resources/de/exxcellent/challenge/weather.csv").toString(), ",");
     }
 
     // @Test

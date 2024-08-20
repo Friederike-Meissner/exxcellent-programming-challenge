@@ -55,7 +55,7 @@ public class WeatherDataProcessor {
     }
 
     public void CheckIfLineValuesCanBeParsed(int line, String[] values) {
-        for (String columnName : columnsWithIntegerValues) {
+        for (String columnName : this.columnsWithIntegerValues) {
             if (!values[getIndexOfColumn(columnName)].matches("^-?[0-9]+$"))
             {
                 throw new Error("Column " + columnName + " in line " + line + " should be an integer.");
