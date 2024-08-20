@@ -49,9 +49,9 @@ public class WeatherDataProcessor {
         return weatherDataWithSmallestTempSpread.getDay();
     }
 
-    public int getIndexOfColumn(String SearchdeColumnName) {
+    public int getIndexOfColumn(String SearchedColumnName) {
         // is used in case the order of columns in the csv changed
-        return this.columnNames.indexOf(SearchdeColumnName);
+        return this.columnNames.indexOf(SearchedColumnName);
     }
 
     public void CheckIfLineValuesCanBeParsed(int line, String[] values) {

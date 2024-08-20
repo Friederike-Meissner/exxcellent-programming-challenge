@@ -36,7 +36,7 @@ class AppTest {
     }
 
     @Test
-    public void testLoadDataThrowsError() {
+    void shouldThrowAnErrorIfAValueCanNotBeParsedToInteger() {
         WeatherDataProcessor weatherDataProcessor = new WeatherDataProcessor();
         try {
             weatherDataProcessor.loadData(Paths.get("src/test/java/testResources/wheaterTestWithNotNumericValue.csv").toString(), ",");
@@ -44,6 +44,16 @@ class AppTest {
         } catch (Error e) {
             assertEquals("Column MxT in line 1 should be an integer.", e.getMessage());
         } 
+    }
+
+    @Test
+    void shouldGetTheFootballTeamWithSmallestGoalsSpread() {
+
+        FootballDataProcessor footballDataProcessor = new FootballDataProcessor();
+        footballDataProcessor.loadData(Paths.get("src/test/java/testResources/wheaterTest.csv").toString(), ",");
+        String teamWithSmallestGoalSpread = footballDataProcessor.getTeamWithSmallestGoalSpread();
+
+        assertEquals("Leeds", teamWithSmallestGoalSpread, "Did not find the team with the smallest goal spread.");
     }
 
     @Test
