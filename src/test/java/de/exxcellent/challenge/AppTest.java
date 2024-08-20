@@ -7,6 +7,9 @@ import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import de.exxcellent.challenge.data.FootballDataProcessor;
+import de.exxcellent.challenge.data.WeatherDataProcessor;
+
 /**
  * Example JUnit 5 test case.
  * @author Benjamin Schmid <benjamin.schmid@exxcellent.de>
@@ -61,9 +64,9 @@ class AppTest {
         App.main("--weather", Paths.get("src/main/resources/de/exxcellent/challenge/weather.csv").toString(), ",");
     }
 
-    // @Test
-    // void runFootball() {
-    //     App.main("--football", "football.csv");
-    // }
+    @Test
+    void runFootball() {
+        App.main("--football", Paths.get("src/main/resources/de/exxcellent/challenge/football.csv").toString(), ",");
+    }
 
 }
